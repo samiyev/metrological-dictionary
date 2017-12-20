@@ -1,7 +1,13 @@
 {
-  "PAGES": {
-      "HOME": {
-          "TITLE": "App works !"
-      }
+  "FOOTER" :{
+    "TITLE": "© 2017 - TASHKENT STATE TECHNICAL UNIVERSITY NAMED AFTER ISLOM KARIMOV"
+  },
+  "SECTIONS":{
+    "DICTIONARY": {
+      "TITLE": "Dictionary"
+    },
+    "DESCRIPTION": {
+      "TITLE": "Description"
+    }
   }
 }

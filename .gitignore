@@ -12,6 +12,7 @@
 # IDEs and editors
 /.idea
 /screens
+/api
 .project
 .classpath
 .c9/

@@ -1,24 +1,24 @@
 import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
 import 'polyfills';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './components/home/home.component';
+import {TopComponent} from './components/top/top.component';
+import {ContentComponent} from './components/content/content.component';
+import {FooterComponent} from './components/footer/footer.component';
 
-// NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {ElectronService} from './providers/electron.service';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-import { ElectronService } from './providers/electron.service';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-
-// AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -26,10 +26,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    TopComponent,
+    ContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -44,4 +48,5 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [ElectronService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

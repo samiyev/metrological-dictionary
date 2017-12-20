@@ -1,79 +1,69 @@
 import {app, BrowserWindow, screen} from 'electron';
 import * as path from 'path';
+import * as FS from 'fs';
+import * as datastore from 'nedb-promise';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
-if (serve) {
-  require('electron-reload')(__dirname, {});
-}
+if (serve) require('electron-reload')(__dirname, {});
 
-function createWindow() {
+const DB =  {
+  words:"",
 
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
+  async init() {
+    const database = path.join(__dirname + "/assets/db/dictionary.json");
+    const native_dir = app.getAppPath();
+    const db_dir = path.join(native_dir, "db");
+    const collection = path.join(db_dir, "dictionary.json");
 
-  // Create the browser window.
-  win = new BrowserWindow(<Electron.BrowserWindowConstructorOptions>{
-    // x: 0,
-    // y: 0,
-    center: true,
-    width: 1200,
-    height: 800,
-    resizable: false,
-    fullscreenable: false,
-    // icon:
-    modal: true,
-    // acceptFirstMouse: true,
-    autoHideMenuBar: true,
-    hasShadow: true,
-    darkTheme: true,
-    titleBarStyle: "hidden"
-  });
+    if (!FS.existsSync(db_dir)) FS.mkdirSync(db_dir, 0o777);
+    FS.writeFileSync(collection, FS.readFileSync(database), {mode: 0o777});
 
-  // and load the index.html of the app.
-  win.loadURL('file://' + __dirname + '/index.html');
+    this.words = datastore({filename: collection, autoload: true});
 
-  // Open the DevTools.
-  if (serve) {
-    win.webContents.openDevTools();
+    console.log(await this.words.findOne({}));
+    // this.queries.ensureIndex({ fieldName: ''});
+    return this;
   }
+};
 
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store window
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
+async function createWindow() {
+  win = new BrowserWindow({
+    width: 950,
+    height: 665,
+    modal: true,
+    center: true,
+    hasShadow: true,
+    resizable: false,
+    // alwaysOnTop: true,
+    autoHideMenuBar: true,
+    fullscreenable: false,
+    thickFrame: false,
+    frame: false,
+    transparent: true
   });
+
+  win.loadURL('file://' + __dirname + '/index.html');
+  if (serve) win.webContents.openDevTools();
+  win.on('closed', () => win = null);
+
+  global['DB'] = await DB.init();
 }
 
 try {
-
-  // This method will be called when Electron has finished
-  // initialization and is ready to create browser windows.
-  // Some APIs can only be used after this event occurs.
   app.on('ready', createWindow);
-
-  // Quit when all windows are closed.
   app.on('window-all-closed', () => {
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-      app.quit();
-    }
+    if (process.platform !== 'darwin') app.quit();
   });
 
   app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-      createWindow();
-    }
+    if (win === null) createWindow();
   });
-
-} catch (e) {
-  // Catch Error
-  // throw e;
 }
+catch (e) {
+
+}
+
+

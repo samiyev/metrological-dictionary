@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,15 +6,15 @@ import {Component, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @Input('dictionary') public dictionary;
 
-  @ViewChild('input') input;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit(){
-    this.input.nativeElement.focus();
-  }
+  ngAfterViewInit() {
 
+  }
 }

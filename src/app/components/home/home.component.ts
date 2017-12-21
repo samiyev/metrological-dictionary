@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {ipcRenderer, app} from 'electron';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input('dictionary') public dictionary;
-
+  app = window.require('electron').remote;
   constructor() {
   }
 
@@ -16,5 +16,9 @@ export class HomeComponent implements OnInit {
 
   ngAfterViewInit() {
 
+  }
+
+  onClose(){
+    this.app.getCurrentWindow().close();
   }
 }

@@ -14,9 +14,10 @@ const DB =  {
 
   async init() {
     const database = path.join(__dirname + "/assets/db/dictionary.json");
-    const native_dir = app.getAppPath();
-    const db_dir = path.join(native_dir, "db");
-    const collection = path.join(db_dir, "dictionary.json");
+    const native_dir = app.getPath('appData');
+    console.log("----------------------", app.getPath('appData'));
+    const db_dir = path.join(native_dir, "/db");
+    const collection = path.join(db_dir, "/dictionary.json");
 
     if (!FS.existsSync(db_dir)) FS.mkdirSync(db_dir, 0o777);
     FS.writeFileSync(collection, FS.readFileSync(database), {mode: 0o777});

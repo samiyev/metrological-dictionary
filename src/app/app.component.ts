@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ElectronService} from './providers/electron.service';
 import {TranslateService} from '@ngx-translate/core';
-import {animate, group, state, style, transition, trigger} from "@angular/animations";
+import {animate, group, keyframes, state, style, transition, trigger} from "@angular/animations";
 
 const DB = window.require('electron').remote.getGlobal('DB');
 
 @Component({
   selector: 'app-root',
   template: `
-    <div *ngIf="show" class="app-page">
+    <div [@flyInOut]="'in'" *ngIf="show" class="app-page">
       <router-outlet></router-outlet>
     </div>
     <div *ngIf="!show" class="loding-box">
@@ -44,36 +44,27 @@ const DB = window.require('electron').remote.getGlobal('DB');
   ],
   animations: [
     trigger('flyInOut', [
-      state('in', style({width: 120, transform: 'translateX(0)', opacity: 1})),
+      state('in', style({transform: 'translateX(0)'})),
       transition('void => *', [
-        style({width: 10, transform: 'translateX(50px)', opacity: 0}),
-        group([
-          animate('0.3s 0.1s ease', style({
-            transform: 'translateX(0)',
-            width: 120
-          })),
-          animate('0.3s ease', style({
-            opacity: 1
-          }))
-        ])
+        animate(1000, keyframes([
+          style({opacity: 0, transform: 'translateX(-50%)', offset: 0}),
+          style({opacity: 0.5, transform: 'translateX(600px)', offset: 0.5}),
+          style({opacity: 1, transform: 'translateX(0)', offset: 1.0})
+        ]))
       ]),
       transition('* => void', [
-        group([
-          animate('0.3s ease', style({
-            transform: 'translateX(50px)',
-            width: 10
-          })),
-          animate('0.3s 0.2s ease', style({
-            opacity: 0
-          }))
-        ])
+        animate(1000, keyframes([
+          style({opacity: 1, transform: 'translateX(0)', offset: 0}),
+          style({opacity: 0.5, transform: 'translateX(-600px)', offset: 0.5}),
+          style({opacity: 0, transform: 'translateX(50%)', offset: 1.0})
+        ]))
       ])
     ])
   ]
 })
 export class AppComponent implements OnInit {
-  dictionary = [];
-  show = false;
+  public dictionary = [];
+  public show = false;
   private defaultLanguage: string;
 
   constructor(public electronService: ElectronService,
@@ -81,7 +72,6 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang('uz');
     this.defaultLanguage = this.translate.getDefaultLang();
   }
-
 
   ngOnInit() {
     this.getTerms();

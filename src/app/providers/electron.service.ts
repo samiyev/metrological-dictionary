@@ -1,4 +1,4 @@
-import {ipcRenderer} from 'electron';
+import {ipcRenderer, app} from 'electron';
 import * as childProcess from 'child_process';
 import {EventEmitter, Injectable} from '@angular/core';
 

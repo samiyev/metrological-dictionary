@@ -6,10 +6,189 @@
   border-bottom-right-radius: 8px;
   position: relative;
   z-index: 5;
+  margin-left: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #a3a3a3;
+
+  .span {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .about-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 30px;
+    width: 200px;
+    padding: 5px;
+
+    &:hover {
+      color: #6a6a6a;
+    }
+
+    transition: 300ms;
+    cursor: pointer;
+
+    img {
+      height: 16px;
+      width: 16px;
+      margin-right: 5px;
+      fill: #595959;
+
+      &:hover {
+        background-color: #d9d9d9;
+      }
+    }
+
+    span {
+      white-space: nowrap;
+      &:hover {
+        color: #595959;
+      }
+    }
+  }
+}
+
+.about-page {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 20px;
+  right: 10px;
+  left: 20px;
+  bottom: 10px;
+  z-index: 6;
+  border-radius: 8px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  color: #a3a3a3;
+
+  .content {
+    height: 350px;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+
+    .logo {
+      img {
+        margin-left: 20px;
+        margin-top: 20px;
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    .name {
+      font-size: large;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      height: 140px;
+      margin-left: 20px;
+      justify-content: center;
+    }
+
+    .close-btn {
+      top: 100px;
+      width: 30px;
+      height: 30px;
+      right: 165px;
+      padding: 5px;
+      transition: 300ms;
+      position: absolute;
+
+      img {
+        height: 30px;
+        width: 30px;
+      }
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+
+    .delimitr {
+      height: 1px;
+      background-color: #a3a3a3;
+      top: 200px;
+      margin-top: 90px;
+      position: absolute;
+      width: 450px;
+      margin-left: 25px;
+    }
+
+    .info-box {
+      position: absolute;
+      top: 320px;
+      margin-left: 25px;
+      width: 450px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      span {
+        font-weight: bold;
+      }
+
+      .otstup{
+        width: 10px;
+      }
+
+      .dev {
+        width: 450px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .idea {
+        width: 450px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .phone {
+        width: 450px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .phone2 {
+        width: 450px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .email {
+        width: 450px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+    }
+  }
 }

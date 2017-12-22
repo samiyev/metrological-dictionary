@@ -8,8 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class FooterComponent implements OnInit {
   @Input('defaultLanguage') public defaultLanguage;
   constructor() { }
+  show = false;
 
   ngOnInit() {
   }
-
 }

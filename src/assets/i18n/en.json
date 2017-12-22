@@ -1,6 +1,7 @@
 {
   "FOOTER" :{
-    "TITLE": "© 2017 - TASHKENT STATE TECHNICAL UNIVERSITY NAMED AFTER ISLOM KARIMOV"
+    "TITLE": "© 2017 - TASHKENT STATE TECHNICAL UNIVERSITY NAMED AFTER ISLOM KARIMOV",
+    "ABOUT": "Developer"
   },
   "SECTIONS":{
     "DICTIONARY": {
@@ -8,6 +9,15 @@
     },
     "DESCRIPTION": {
       "TITLE": "DEFENITION"
+    }
+  },
+  "ABOUT": {
+    "TEXT": " Самиев Фозилбек, магистр ТГТУ",
+    "IDEA": " Труев Шавкат, доцент ТГТУ",
+    "CONTACT": {
+      "PHONE": " +998(97)-755-28-90",
+      "PHONE2": " +998(99)-832-00-33",
+      "EMAIL": " fozilbek.samiyev@gmail.com"
     }
   }
 }

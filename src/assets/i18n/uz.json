@@ -1,6 +1,7 @@
 {
   "FOOTER" :{
-    "TITLE": "© 2017 - ISLOM KARIMOV NOMIDAGI TOSHKENT DAVLAT TEXNIKA UNIVERSITETI"
+    "TITLE": "© 2017 - ISLOM KARIMOV NOMIDAGI TOSHKENT DAVLAT TEXNIKA UNIVERSITETI",
+    "ABOUT": "Ishlab chiqaruvchi"
   },
   "SECTIONS":{
     "DICTIONARY": {
@@ -9,6 +10,15 @@
     "DESCRIPTION": {
       "TITLE": "TA'RIF",
       "MESSAGE": "Atamani tanlang."
+    }
+  },
+  "ABOUT": {
+    "TEXT": " Самиев Фозилбек, магистр ТГТУ.",
+    "IDEA": " Труев Шавкат, доцент ТГТУ",
+    "CONTACT": {
+      "PHONE": " +998(97)-755-28-90",
+      "PHONE2": " +998(99)-832-00-33",
+      "EMAIL": " fozilbek.samiyev@gmail.com"
     }
   }
 }

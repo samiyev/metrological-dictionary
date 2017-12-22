@@ -1,3 +1,29 @@
 <div class="page noselect">
-  {{'FOOTER.TITLE' | translate}}
+  <span>{{'FOOTER.TITLE' | translate}}</span>
+
+  <div class="about-btn" (click)="show = !show">
+    <img src="../../../assets/images/Orion_info-help.svg" alt=""><span>{{'FOOTER.ABOUT' | translate}}</span>
+  </div>
+
+</div>
+<div *ngIf="show" class="about-page noselect">
+  <div class="content">
+    <div class="logo">
+      <img src="../../../assets/images/icon.png" alt="">
+    </div>
+    <div class="name">METROLOGIK MA'LUMOTNOMA</div>
+    <div (click)="show = !show" class="close-btn">
+      <img src="../../../assets/images/close.svg" alt="">
+    </div>
+    <span class="delimitr"></span>
+
+    <div class="info-box">
+      <div class="idea">Идея подана: <div class="otstup"></div><span> {{ 'ABOUT.IDEA' | translate}}</span></div>
+      <div class="phone">Номер телефона:<div class="otstup"></div> <span> {{ 'ABOUT.CONTACT.PHONE' | translate}}</span></div>
+      <div class="dev">Программа была разработана:<div class="otstup"></div> <span> {{ 'ABOUT.TEXT' | translate}}</span></div>
+      <div class="phone2">Номер телефона: <div class="otstup"></div><span> {{ 'ABOUT.CONTACT.PHONE2' | translate}}</span></div>
+      <div class="email">Email: <div class="otstup"></div><span> {{ 'ABOUT.CONTACT.EMAIL' | translate}}</span></div>
+    </div>
+  </div>
+
 </div>

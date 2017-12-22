@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   }
 
   public async onLoad() {
-    await (new Promise(done => setTimeout(done, 1)));
+    await (new Promise(done => setTimeout(done, 5000)));
     this.electronService.onLoaded();
     this.show = true;
   }

@@ -140,7 +140,8 @@
           height: 50%;
 
           .langage-header {
-            height: 20px;
+            font-size: 12px;
+            height: 15px;
             padding: 10px;
             border-top: 1px solid #f3f3f5;
             border-bottom: 1px solid #F3F3F5;
@@ -150,7 +151,14 @@
           .text {
             overflow-y: scroll;
             padding: 10px;
-            height: 185px;
+            height: 195px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #5a5a5a;
+          }
+
+          .text:first-letter {
+            text-transform:uppercase;
           }
         }
 
@@ -159,7 +167,8 @@
           height: 50%;
 
           .langage-header {
-            height: 20px;
+            font-size: 12px;
+            height: 15px;
             padding: 10px;
             border-top: 1px solid #f3f3f5;
             border-bottom: 1px solid #F3F3F5;
@@ -169,7 +178,14 @@
           .text {
             overflow-y: scroll;
             padding: 10px;
-            height: 185px;
+            height: 195px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #5a5a5a;
+          }
+
+          .text:first-letter {
+            text-transform:uppercase;
           }
         }
       }
@@ -179,10 +195,10 @@
 
 #loader-2 span {
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 100%;
-  background: linear-gradient(11deg, #2895ff, #00c8c8 50%);
+  background-color: #1CD2E1;
   margin: 35px 5px;
 }
 

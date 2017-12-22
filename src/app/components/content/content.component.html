@@ -3,16 +3,16 @@
   <div class="dictionary">
 
     <div class="header">
-      <div class="text">{{ 'SECTIONS.DICTIONARY.TITLE' | translate}}</div>
+      <div class="text noselect">{{ 'SECTIONS.DICTIONARY.TITLE' | translate}}</div>
 
-      <div class="search">
+      <div class="search ">
         <input [class.show]="showSearchInput" #searchData type="search" (keyup)="0"
                (focus)="selectedWord.selected = false; selectedWord = null" placeholder="Qidirish"/>
-        <div class="btn">
+        <div class="btn noselect">
           <img *ngIf="!showSearchInput" (click)="showSearchInput = !showSearchInput"
                src="../../../assets/images/search.svg" alt="">
         </div>
-        <div class="btn">
+        <div class="btn noselect">
           <img *ngIf="showSearchInput" (click)="showSearchInput = !showSearchInput; searchData.value = ''"
                src="../../../assets/images/close.svg" alt="">
         </div>
@@ -33,22 +33,22 @@
 
   <div class="description">
     <div class="header">
-      <span>{{ 'SECTIONS.DESCRIPTION.TITLE' | translate}}</span>
+      <span class="noselect">{{ 'SECTIONS.DESCRIPTION.TITLE' | translate}}</span>
     </div>
 
     <div class="main-description">
-      <div *ngIf="!selectedWord" class="message">
+      <div *ngIf="!selectedWord" class="message noselect">
         {{'SECTIONS.DESCRIPTION.MESSAGE' | translate}}
       </div>
 
       <div *ngIf="!loading && selectedWord" class="content-description">
         <div class="ru">
-          <div class="langage-header">{{'Uzbek tilida'}}</div>
+          <div class="langage-header">{{defaultLanguage === 'uz'? 'UZB' : 'RUS'}}</div>
           <div class="text" id="scroll">{{selectedWord?.definition[defaultLanguage]}}</div>
         </div>
 
         <div class="uz">
-          <div class="langage-header">{{'Rus tilida'}}</div>
+          <div class="langage-header">{{defaultLanguage === 'ru'? 'UZB' : 'RUS'}}</div>
           <div class="text" id="scroll">{{selectedWord?.definition[defaultLanguage === 'uz'? 'ru': 'uz']}}</div>
         </div>
       </div>

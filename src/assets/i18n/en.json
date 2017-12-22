@@ -4,10 +4,10 @@
   },
   "SECTIONS":{
     "DICTIONARY": {
-      "TITLE": "Dictionary"
+      "TITLE": "TERM"
     },
     "DESCRIPTION": {
-      "TITLE": "Description"
+      "TITLE": "DEFENITION"
     }
   }
 }

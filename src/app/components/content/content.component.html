@@ -1,11 +1,31 @@
 <div class="page">
 
   <div class="dictionary">
-    <div class="header">{{ 'SECTIONS.DICTIONARY.TITLE' | translate}}</div>
+
+    <div class="header">
+      <div class="text">{{ 'SECTIONS.DICTIONARY.TITLE' | translate}}</div>
+
+      <div class="search">
+        <input [class.show]="showSearchInput" #searchData type="search" (keyup)="0"
+               (focus)="selectedWord.selected = false; selectedWord = null" placeholder="Qidirish"/>
+        <div class="btn">
+          <img *ngIf="!showSearchInput" (click)="showSearchInput = !showSearchInput"
+               src="../../../assets/images/search.svg" alt="">
+        </div>
+        <div class="btn">
+          <img *ngIf="showSearchInput" (click)="showSearchInput = !showSearchInput; searchData.value = ''"
+               src="../../../assets/images/close.svg" alt="">
+        </div>
+      </div>
+
+    </div>
+
     <div class="main-dictionary" id="scroll">
-      <div class="word"
-           (click)="onWordSelected(word)"
-           *ngFor="let word of dictionary">{{word.term[defaultLanguage]}}
+      <div class="group" *ngFor="let word of dictionary | search:searchData.value">
+        <div class="groper" *ngIf="isPrintedGroup(word)">{{word.group[defaultLanguage]}}</div>
+        <div class="word" [class.selected]="word.selected" (click)="this.loading = true;onWordSelected(word)">
+          {{word.term[defaultLanguage]}}
+        </div>
       </div>
     </div>
 
@@ -14,17 +34,33 @@
   <div class="description">
     <div class="header">
       <span>{{ 'SECTIONS.DESCRIPTION.TITLE' | translate}}</span>
-      <div class="language-switcher">
-        <div class="language"
-             (click)="onLangulageChanged(lan)"
-             [class.selected]="lan.state"
-             *ngFor="let lan of languages"
-             [ngClass]="lan.value">{{lan.title}}
-        </div>
-      </div>
     </div>
 
-    <div class="main-description">{{selectedWord?.definition[defaultWordLanguage]}}</div>
+    <div class="main-description">
+      <div *ngIf="!selectedWord" class="message">
+        {{'SECTIONS.DESCRIPTION.MESSAGE' | translate}}
+      </div>
 
+      <div *ngIf="!loading && selectedWord" class="content-description">
+        <div class="ru">
+          <div class="langage-header">{{'Uzbek tilida'}}</div>
+          <div class="text" id="scroll">{{selectedWord?.definition[defaultLanguage]}}</div>
+        </div>
+
+        <div class="uz">
+          <div class="langage-header">{{'Rus tilida'}}</div>
+          <div class="text" id="scroll">{{selectedWord?.definition[defaultLanguage === 'uz'? 'ru': 'uz']}}</div>
+        </div>
+      </div>
+
+      <div *ngIf="loading" class="three col">
+        <div class="loader" id="loader-2">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

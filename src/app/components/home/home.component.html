@@ -1,10 +1,21 @@
 <div class="page">
-  <div class="top">
+  <div class="top noselect">
     <div class="logo">
-      <img src="../../../assets/images/favicon.png" alt="">
+      <img src="../../../assets/images/icon.png" alt="">
     </div>
-    <div (click)="onClose()" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <div class="language-switcher">
+      <div class="language"
+           (click)="onLangulageChanged(lan)"
+           [class.selected]="lan.state"
+           *ngFor="let lan of languages"
+           [ngClass]="lan.value">{{lan.title}}
+      </div>
+    </div>
+
+    <div (click)="onClose()" class="close-btn">
+      <img src="../../../assets/images/close.svg" alt="">
+    </div>
   </div>
   <app-content></app-content>
-  <app-footer></app-footer>
+  <app-footer [defaultLanguage]="defaultLanguage"></app-footer>
 </div>

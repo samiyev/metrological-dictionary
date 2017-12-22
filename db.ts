@@ -8,7 +8,7 @@ export class DB {
   static words: any;
 
   static async init () {
-    const database = path.join(__dirname + "/assets/db/dictionary.json");
+    const database = path.join(__dirname + "/assets/db/dictionary.ts");
     const native_dir = app.getAppPath();
     const db_dir = path.join(native_dir, "db");
     const collection = path.join(db_dir, "dictionary.json");

@@ -18,6 +18,7 @@ import {FooterComponent} from './components/footer/footer.component';
 
 import {ElectronService} from './providers/electron.service';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SearchPipe } from './pipes/search.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,7 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     TopComponent,
     ContentComponent,
-    FooterComponent
+    FooterComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

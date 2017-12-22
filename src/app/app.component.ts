@@ -3,45 +3,10 @@ import {ElectronService} from './providers/electron.service';
 import {TranslateService} from '@ngx-translate/core';
 import {animate, group, keyframes, state, style, transition, trigger} from "@angular/animations";
 
-const DB = window.require('electron').remote.getGlobal('DB');
-
 @Component({
   selector: 'app-root',
-  template: `
-    <div [@flyInOut]="'in'" *ngIf="show" class="app-page">
-      <router-outlet></router-outlet>
-    </div>
-    <div *ngIf="!show" class="loding-box">
-
-    </div>
-  `,
-  styles: [
-      `
-      .app-page {
-        height: calc(100vh - 40px);
-        width: calc(100vw - 40px);
-        overflow: hidden;
-        background-color: #F8F8F8;
-        border-radius: 8px;
-        -webkit-box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 1);
-        -moz-box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 1);
-        box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 1);
-        position: relative;
-        padding: 5px;
-      }
-
-      .loding-box {
-        height: 350px;
-        width: 500px;
-        background-color: #fff;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 8px;
-      }
-    `
-  ],
+  templateUrl: './app.component.html',
+  styleUrls: ['/app.component.scss'],
   animations: [
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
@@ -63,29 +28,28 @@ const DB = window.require('electron').remote.getGlobal('DB');
   ]
 })
 export class AppComponent implements OnInit {
-  public dictionary = [];
   public show = false;
-  private defaultLanguage: string;
 
-  constructor(public electronService: ElectronService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('uz');
-    this.defaultLanguage = this.translate.getDefaultLang();
+  constructor(private electronService: ElectronService) {
   }
 
   ngOnInit() {
-    this.getTerms();
+    this.onLoad();
   }
 
-  async getTerms() {
-    const terms = await DB.words.find({});
-    this.dictionary.push(...terms.sort((a, b) => {
-      a = a.group[this.defaultLanguage].charCodeAt(0);
-      b = b.group[this.defaultLanguage].charCodeAt(0);
-      return a - b;
-    }));
-    await (new Promise(done => setTimeout(done, 5000)));
-    this.electronService.onDictionaryInited(this.dictionary);
+  public async onLoad() {
+    await (new Promise(done => setTimeout(done, 1)));
+    this.electronService.onLoaded();
     this.show = true;
   }
 }
+
+// const DB = window.require('electron').remote.getGlobal('DB');
+// const terms = await DB.words.find({}, {group: 1, term: 1});
+// console.log(terms[0]);
+//
+// this.dictionary.push(...terms.sort((a, b) => {
+//   a = a.group[this.defaultLanguage].charCodeAt(0);
+//   b = b.group[this.defaultLanguage].charCodeAt(0);
+//   return a - b;
+// }));

@@ -4,10 +4,11 @@
   },
   "SECTIONS":{
     "DICTIONARY": {
-      "TITLE": "Словарь"
+      "TITLE": "ТЕРМИН"
     },
     "DESCRIPTION": {
-      "TITLE": "Описание"
+      "TITLE": "ОПРЕДЕЛЕНИЕ",
+      "MESSAGE": "Выберите термин."
     }
   }
 }

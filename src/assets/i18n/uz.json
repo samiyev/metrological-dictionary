@@ -4,10 +4,11 @@
   },
   "SECTIONS":{
     "DICTIONARY": {
-      "TITLE": "Lug`at"
+      "TITLE": "ATAMA"
     },
     "DESCRIPTION": {
-      "TITLE": "Tavsif"
+      "TITLE": "TA'RIF",
+      "MESSAGE": "Atamani tanlang."
     }
   }
 }

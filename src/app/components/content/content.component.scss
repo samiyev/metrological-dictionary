@@ -1,5 +1,5 @@
 .page {
-  height: 568px;
+  height: 550px;
   background-color: #FFFFFF;
   position: relative;
   display: flex;
@@ -9,34 +9,91 @@
   .dictionary {
     height: 100%;
     width: 35%;
+    overflow: hidden;
 
     .header {
-      height: 25px;
-      font-size: small;
+      height: 40px;
+      font-size: 14px;
+      background-color: #fff;
+      color: #989898;
       display: flex;
       align-items: center;
-      background-color: #F8F8F8;
-      color: #989898;
+      justify-content: space-between;
+      box-shadow: 0 5px 5px rgba(230, 230, 230, 1);
+      position: relative;
+      padding: 0 15px;
+
+      .search {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        left: 15px;
+        bottom: 0;
+
+        input {
+          padding: 4px;
+          width: 100%;
+          transition: 0.3s;
+          position: absolute;
+          left: 110%;
+          border: none;
+          border-bottom: 1px solid #dcdcde;
+          background: #fff;
+
+          &:focus {
+            outline: none;
+          }
+          &.show {
+            left: 0;
+          }
+        }
+
+        .btn {
+          cursor: pointer;
+          font-size: medium;
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          img {
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
     }
 
     .main-dictionary {
-      height: 545px;
+      height: 510px;
       overflow-y: scroll;
-      padding-right: 5px;
-      .word {
-        height: 40px;
-        border: 1px solid #C7C7C9;
-        background-color: #FAFAFA;
-        border-bottom: 1px solid #C7C7C9;
+
+      .groper {
         font-size: small;
+        font-weight: 500;
+        padding: 5px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+      }
+
+      .word {
+        min-height: 30px;
+        border-top: 1px solid #f3f3f5;
+        border-bottom: 1px solid #F3F3F5;
+        background-color: #FAFAFA;
+        font-size: 12px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         padding: 5px;
         cursor: pointer;
+        margin-bottom: -1px;
+        transition: 300ms ease all;
+        color: #5a5a5a;
 
-        &:hover {
-          background-color: #FFFFFF;
+        &:hover, &.selected {
+          background-color: #1CD2E1;
+          color: #fff;
         }
       }
     }
@@ -45,49 +102,129 @@
   .description {
     height: 100%;
     width: 65%;
+    overflow: hidden;
 
     .header {
-      height: 25px;
-      font-size: small;
+      height: 40px;
+      font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #F8F8F8;
-      color: #bfbfbf;
+      background-color: #fff;
+      color: #ABABAB;
+      box-shadow: 0 5px 5px rgba(230, 230, 230, 1);
+      padding: 0 10px;
+    }
 
-      .language-switcher {
-        color: black;
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        cursor: pointer;
+    .main-description {
+      height: 510px;
+      //background: #21D1E0;
 
-        font-size: small;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
 
-        .language {
-          width: 40px;
-          height: 15px;
-          background-color: #BCF1F7;
-          font-size: small;
+      .message {
+        font-size: medium;
+        color: #ABABAB;
+      }
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #21D1E0;
+      .content-description {
+        height: 100%;
+        width: 100%;
 
-          &.selected {
-            background-color: #21D1E0;
+        .ru {
+          width: 100%;
+          height: 50%;
+
+          .langage-header {
+            height: 20px;
+            padding: 10px;
+            border-top: 1px solid #f3f3f5;
+            border-bottom: 1px solid #F3F3F5;
+            color: #989898;
+          }
+
+          .text {
+            overflow-y: scroll;
+            padding: 10px;
+            height: 185px;
+          }
+        }
+
+        .uz {
+          width: 100%;
+          height: 50%;
+
+          .langage-header {
+            height: 20px;
+            padding: 10px;
+            border-top: 1px solid #f3f3f5;
+            border-bottom: 1px solid #F3F3F5;
+            color: #989898;
+          }
+
+          .text {
+            overflow-y: scroll;
+            padding: 10px;
+            height: 185px;
           }
         }
       }
     }
-
-    .main-description {
-      height: 545px;
-      color: black;
-      font-size: small;
-      padding: 10px;
-    }
   }
+}
+
+#loader-2 span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background: linear-gradient(11deg, #2895ff, #00c8c8 50%);
+  margin: 35px 5px;
+}
+
+#loader-2 span:nth-child(1) {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+#loader-2 span:nth-child(2) {
+  animation: bounce 1s ease-in-out 0.33s infinite;
+}
+
+#loader-2 span:nth-child(3) {
+  animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@keyframes bounce {
+  0%, 75%, 100% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  25% {
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+}
+
+.three {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: relative;
+  margin: 0 auto;
 }

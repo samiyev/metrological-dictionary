@@ -1,11 +1,13 @@
 .page {
-  position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
 
   .top {
-    height: 30px;
+    display: flex;
+    justify-content: space-between;
     border-bottom: 5px solid #F8F8FA;
+    height: 30px;
 
     .logo {
       height: 30px;
@@ -13,24 +15,68 @@
       padding: 5px;
       position: relative;
 
+
       img {
         max-height: 20px;
+        background-color: #FFFFFF;
       }
     }
 
-    display: flex;
-    justify-content: space-between;
-
     .close-btn {
-      height: 30px;
+      color: #bfbfbf;
       width: 30px;
+      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #bfbfbf;
 
-      &:hover{
+      img {
+        height: 30px;
+        width: 30px;
+      }
+
+      &:hover {
         background-color: #d9d9d9;
+      }
+    }
+  }
+
+  .language-switcher {
+    position: absolute;
+    top: 8px;
+    right: 60px;
+    color: black;
+    width: 200px;
+    cursor: pointer;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > div {
+      &:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+    }
+
+    .language {
+      width: 40px;
+      height: 15px;
+      font-size: small;
+      background-color: #BCF1F7;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #21D1E0;
+
+      &.selected {
+        background-color: #21D1E0;
       }
     }
   }

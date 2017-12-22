@@ -6,9 +6,9 @@ import {EventEmitter, Injectable} from '@angular/core';
 export class ElectronService {
   private ipcRenderer: typeof ipcRenderer;
   private childProcess: typeof childProcess;
-  public onDictionaryInitedEvent = new EventEmitter();
-  public isElectron = () => window && window.process && window.process.type;
-  public dictionary: any;
+
+  public loaded = new EventEmitter();
+  public defaultLanguageChanged = new EventEmitter();
 
   constructor() {
     if (this.isElectron()) {
@@ -17,7 +17,14 @@ export class ElectronService {
     }
   }
 
-  public onDictionaryInited(dictionary) {
-    this.dictionary = dictionary
+  public onLoaded() {
+    this.loaded.emit();
   }
+
+  public onDefaultlanguageChanged(language) {
+
+    this.defaultLanguageChanged.emit(language);
+  }
+
+  private isElectron = () => window && window.process && window.process.type;
 }

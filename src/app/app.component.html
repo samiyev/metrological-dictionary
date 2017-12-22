@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div [@flyInOut]="'in'" *ngIf="show" class="app-page">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!show" class="loding-box noselect">
+  <img src="../assets/images/logo.png" alt="">
+  <div class="name">METROLOGIK MA'LUMOTNOMA</div>
+
+  <div class="container ">
+    <div class="progress">
+      <div class="progress-bar">
+        <!--<div class="progress-shadow"></div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+

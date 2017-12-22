@@ -1,8 +1,8 @@
 {
   "name": "MM",
   "version": "1.0.0",
-  "description": "Angular 5 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "description": "Metrologik ma'lumotnoma (TGTU)",
+  "homepage": "https://github.com/samiyev/metrological-dictionary",
   "author": {
     "name": "Fozilbek Samiyev",
     "email": "fozilbek.samiyev@gmail.com"
